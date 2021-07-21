@@ -1,0 +1,37 @@
+.input-group {
+  align-items: center;
+  &.login-group {
+    padding: 2rem 2rem;
+    border-bottom: 1px solid rgba(122, 122, 122, 1);
+  }
+  .form-control {
+    &:focus,
+    &:active {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+  &.form-check {
+    .form-check-input {
+      width: 4em;
+      height: 2em;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 1em;
+      border-bottom-right-radius: 2em !important;
+      border-top-right-radius: 2em !important;
+      background-color: #cccccc;
+      border-color: #cccccc;
+      &:checked {
+        background-color: #313131;
+        border-color: #313131;
+      }
+    }
+  }
+}
+
+.ck-editor__editable_inline {
+  width: 70vw;
+  min-height: 500px;
+  max-height: 500px;
+}

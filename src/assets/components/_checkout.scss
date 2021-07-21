@@ -1,0 +1,29 @@
+.card-order {
+  .edit-bag-icon {
+    width: 25px
+  }
+}
+
+.order-table {
+  .orderImg-wrapper {
+    width: 80px;
+    height: 80px;
+    img {
+      object-fit: cover;
+    }
+  }
+  .td-order-img {
+    width: 80px;
+  }
+  .td-order-qty {
+    width: 50px
+  }
+}
+
+//success order
+.card-order-success {
+  height: 100vh;
+  .td-order-success {
+    width: 100px;
+  }
+}

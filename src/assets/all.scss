@@ -1,0 +1,26 @@
+// ~符號指向 /node_modules/ 資料夾
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables"; // 載入 Custom 變數
+@import "~bootstrap/scss/mixins";
+
+@import '~bootstrap'; //從 node_modules裡面import
+
+// @import '~material-design-icons/iconfont/material-icons.css';
+@import '~material-icons/iconfont/material-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&display=swap');
+
+@import "./components/font";
+@import "./components/nav";
+@import "./components/icon";
+@import "./components/pointer";
+@import "./components/wrapper";
+@import "./components/card";
+@import "./components/modal";
+@import "./components/table";
+@import "./components/input";
+@import "./components/button";
+@import "./components/products";
+@import "./components/product";
+@import "./components/cart";
+@import "./components/checkout";

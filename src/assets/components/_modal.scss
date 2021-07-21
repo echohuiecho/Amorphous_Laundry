@@ -1,0 +1,21 @@
+.modal-dialog {
+  &.modal-form {
+    max-width: calc(100% - 3.5rem);
+  }
+}
+
+.modal-header {
+  &.form-modal-header {
+    padding: 2rem;
+  }
+  &.delete-modal-header {
+    padding: 1rem 2rem;
+  }
+}
+
+.modal-body {
+  padding: 2rem;
+  img {
+    width: 300px;
+  }
+}

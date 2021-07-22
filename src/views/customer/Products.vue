@@ -20,7 +20,7 @@
         @click.prevent="getProducts(paginationData.current_page - 1)"
       >
         <div class="w-100 h-100 product-overlay d-flex justify-content-center align-items-center">
-          <img src="../../../public/icon/arrow-left-circle.svg" alt="" class="circle-pagination" />
+          <img src="../../assets/icon/arrow-left-circle.svg" alt="" class="circle-pagination" />
         </div>
       </a>
     </div>
@@ -33,7 +33,7 @@
         @click.prevent="getProducts(paginationData.current_page + 1)"
       >
         <div class="w-100 h-100 product-overlay d-flex justify-content-center align-items-center">
-          <img src="../../../public/icon/arrow-right-circle.svg" alt="" class="circle-pagination" />
+          <img src="../../assets/icon/arrow-right-circle.svg" alt="" class="circle-pagination" />
         </div>
       </a>
     </div>

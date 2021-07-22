@@ -5,11 +5,11 @@
       <div class="card-footer border-secondary bg-white p-0">
         <div class="laundry-label-wrapper d-flex justify-content-between p-3">
           <a href="#" class="cart-icon d-flex">
-            <img src="../../../public/icon/machine_wash.svg" alt="" />
+            <img src="../../assets/icon/machine_wash.svg" alt="" />
             <!-- <div class="cart-counter text-center">{{ cart.carts.length }}</div> -->
           </a>
-          <img src="../../../public/icon/dry_clean.svg" alt="" class="dry-clean-label" />
-          <img src="../../../public/icon/ironing_low.svg" alt="" class="iron-label" />
+          <img src="../../assets/icon/dry_clean.svg" alt="" class="dry-clean-label" />
+          <img src="../../assets/icon/ironing_low.svg" alt="" class="iron-label" />
         </div>
         <a
           href="#"

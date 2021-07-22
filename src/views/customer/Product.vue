@@ -17,16 +17,16 @@
         <div class="card-footer border-secondary bg-white p-0">
           <div class="laundry-label-wrapper d-flex justify-content-between p-3">
             <a href="#" class="cart-icon d-flex">
-              <img src="../../../public/icon/machine_wash.svg" alt="" />
+              <img src="../../assets/icon/machine_wash.svg" alt="" />
               <!-- <div class="cart-counter text-center">{{ cart.carts.length }}</div> -->
             </a>
             <img
               v-if="product.dryCleaning"
-              src="../../../public/icon/dry_clean.svg"
+              src="../../assets/icon/dry_clean.svg"
               alt=""
               class="dry-clean-label"
             />
-            <img v-if="product.ironing" src="../../../public/icon/ironing_low.svg"
+            <img v-if="product.ironing" src="../../assets/icon/ironing_low.svg"
             alt="" class="iron-label" />
           </div>
           <a href="#" class="w-100 btn btn-primary px-4 text-uppercase"

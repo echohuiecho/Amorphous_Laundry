@@ -5,10 +5,10 @@
       <div class="card-footer border-secondary bg-white p-0">
         <div class="laundry-label-wrapper d-flex justify-content-between p-3">
           <a href="#" class="cart-icon" @click="$emit('list-status', 'cartList')">
-            <img src="../../../public/icon/machine_wash.svg" alt="" />
+            <img src="../../assets/icon/machine_wash.svg" alt="" />
           </a>
-          <img src="../../../public/icon/dry_clean.svg" alt="" class="dry-clean-label" />
-          <img src="../../../public/icon/ironing_low.svg" alt="" class="iron-label" />
+          <img src="../../assets/icon/dry_clean.svg" alt="" class="dry-clean-label" />
+          <img src="../../assets/icon/ironing_low.svg" alt="" class="iron-label" />
         </div>
         <router-link class="w-100 btn btn-primary px-4 text-uppercase" to="/products">
           I have more things to wash

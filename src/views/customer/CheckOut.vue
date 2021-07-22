@@ -117,7 +117,7 @@
                     class="d-flex align-items-center w-100 btn text-uppercase"
                     @click="backToCart"
                   >
-                    <img src="../../../public/icon/arrow-left-circle.svg"
+                    <img src="../../assets/icon/arrow-left-circle.svg"
                     alt="" class="edit-bag-icon me-2" />
                     <span>edit bag</span>
                   </button>

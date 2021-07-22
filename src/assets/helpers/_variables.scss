@@ -10,10 +10,10 @@ $white:    #fff !default;
 $gray-100: #f9f9f9 !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #888792; // #E1DEDE !default;
-$gray-600: #707070 !default;
-$gray-700: #575757 !default;
+$gray-400: #888792; // #ced4da !default;
+$gray-500: #3D3C48; // #E1DEDE !default;
+$gray-600: #353443; // #707070 !default;
+$gray-700: #201F2C; // #575757 !default;
 $gray-800: #121220; // #313131 !default;
 $gray-900: #0E0E1A; // #212529 !default;
 $black:    #000 !default;
@@ -40,10 +40,12 @@ $blue:    #0d6efd !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
-$red:     #dc3545 !default;
+$red:     #9B3000; // #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #198754 !default;
+$green:   #04939A; // #198754 !default;
+$light-green:#638B8D;
+$dark-green: #1F222F;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
 // scss-docs-end color-variables
@@ -58,28 +60,34 @@ $colors: (
   "orange":     $orange,
   "yellow":     $yellow,
   "green":      $green,
+  "light-green":     $light-green,
+  "dark-green":      $dark-green,
   "teal":       $teal,
   "cyan":       $cyan,
   "white":      $white,
-  "gray-500":   $gray-500,
-  "gray":       $gray-600,
-  "gray-800":  $gray-800,
+  "gray-400":   $gray-400,
+  "gray":       $gray-500,
+  "gray-600":   $gray-600,
+  "gray-700":   $gray-700,
+  "gray-800":   $gray-800,
   "gray-900":   $gray-900,
 ) !default;
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:       $black !default;
-$secondary:     $gray-600 !default;
+$primary:       $green; // $black !default;
+$secondary:     $gray-500 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
-$gray-500:      $gray-500 !default;
+$light:         $gray-600 !default;
+$gray-400:      $gray-400 !default;
+$gray-600:      $gray-600 !default;
+$gray-700:      $gray-700 !default;
 $gray-800:      $gray-800 !default;
 $gray-900:      $gray-900 !default;
-$dark:          $black !default;
+$dark:          $gray-900; // $black !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -91,10 +99,11 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "gray-500":   $gray-500,
+  "gray-600":   $gray-600,
+  "gray-700":   $gray-700,
   "gray-800":   $gray-800,
   "gray-900":   $gray-900,
-  "dark":       $dark
+  "dark":       $gray-900, // $dark
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -500,7 +509,7 @@ $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;
 
-$text-muted:                  $gray-600 !default;
+$text-muted:                  $light-green; // $gray-600 !default;
 
 $initialism-font-size:        $small-font-size !default;
 

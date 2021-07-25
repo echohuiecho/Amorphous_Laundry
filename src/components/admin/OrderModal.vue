@@ -7,7 +7,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-form modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content bg-body">
+      <div class="modal-content backend-modal-content bg-body">
         <div class="modal-header form-modal-header">
           <h2 class="h3">
             Edit Order

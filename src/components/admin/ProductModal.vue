@@ -7,7 +7,7 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-form modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content bg-body">
+      <div class="modal-content backend-modal-content bg-body">
         <div class="modal-header form-modal-header">
           <h1 v-if="modalType === 'addProduct'" class="h3">
             Add New Product
@@ -228,7 +228,7 @@
               <div class="w-100">
                 <button
                   type="button"
-                  class="btn btn-gray-dark mb-2"
+                  class="btn btn-secondary text-gray-400 rounded-0 mb-2"
                   @click="openUploadModal('key image')"
                 >
                   Browse Image
@@ -257,14 +257,15 @@
                 <div class="w-100">
                   <button
                     type="button"
-                    class="btn btn-gray-dark mb-2"
+                    class="btn btn-secondary text-gray-400 rounded-0 mb-2"
                     @click="openUploadModal('image', index)"
                   >
                     Browse Image
                   </button>
                 </div>
                 <div class="w-100">
-                  <button type="button" class="btn btn-gray-dark mb-2" @click="removeImage(index)">
+                  <button type="button"
+                  class="btn btn-danger text-gray-400 rounded-0 mb-2" @click="removeImage(index)">
                     Delete Image
                   </button>
                 </div>
@@ -272,7 +273,7 @@
             </template>
             <button
               type="button"
-              class="btn btn-gray-dark mb-3"
+              class="btn btn-secondary text-primary rounded-0 mb-3"
               @click="productTemp.imagesUrl.push('')"
             >
               Add Image

@@ -2,13 +2,8 @@
   align-items: center;
   &.login-group {
     padding: 0.5rem 2rem;
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #565568;
-      opacity: 1; /* Firefox */
-    }
   }
   .form-control {
-    background-color: #2C2A41 !important;
     &:focus,
     &:active {
       box-shadow: none;
@@ -84,6 +79,46 @@
 .cart-sidebar {
   .input-group {
     .form-control {
+      &:focus,
+      &:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    }
+  }
+}
+
+.card-login {
+  .input-group {
+    align-items: center;
+    &.login-group {
+      padding: 0.5rem 2rem;
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #565568;
+        opacity: 1; /* Firefox */
+      }
+    }
+    .form-control {
+      background-color: #2C2A41 !important;
+      &:focus,
+      &:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    }
+  }
+}
+
+.backend-modal-content {
+  .input-group {
+    &.login-group {
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #56555E;
+        opacity: 1; /* Firefox */
+      }
+    }
+    .form-control {
+      background-color: $body-bg;
       &:focus,
       &:active {
         box-shadow: none;

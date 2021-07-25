@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="logo-wrapper me-3">
         <img src="../../assets/icon/logo.png" alt="" class="logo" />
-        <router-link class="ms-2" to="/">Amorphous Laundry Dashboard</router-link>
+        <router-link class="ms-2" to="/admin/products">Amorphous Laundry Dashboard</router-link>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText"

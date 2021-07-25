@@ -68,18 +68,22 @@ const routes = [
         name: 'CouponsAdmin',
         component: () => import('@/views/admin/CouponsAdmin.vue'),
       },
-      {
-        path: 'articles',
-        name: 'ArticlesAdmin',
-        component: () => import('@/views/admin/ArticlesAdmin.vue'),
-      },
     ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: () => import('@/views/NotFound.vue'),
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  scrollBehavior() {
+    // always scroll to top
+    return { top: 0 };
+  },
 });
 
 export default router;

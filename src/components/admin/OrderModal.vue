@@ -7,17 +7,19 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-form modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content bg-body">
         <div class="modal-header form-modal-header">
-          <h2 class="modal-title title-hk">
+          <h2 class="h3">
             Edit Order
           </h2>
           <button
             type="button"
-            class="btn-close"
+            class="btn p-0"
             aria-label="Close"
             @click="closeModal"
-          ></button>
+          >
+            <i class="material-icons">close</i>
+          </button>
         </div>
         <div class="modal-body product-modal-body">
           <Form id="productForm" v-slot="{ errors }" @submit="updateOrder(orderTemp.id)">
@@ -110,7 +112,7 @@
                 id="customerMsg"
                 name="Description"
                 as="textarea"
-                class="w-100"
+                class="form-control w-100"
                 rows="5"
                 placeholder="Please type the order message"
                 aria-label="Customer message"
@@ -136,13 +138,13 @@
             </div>
             <div class="modal-footer product-modal-footer">
               <button type="button"
-              class="btn btn-outline-primary btn-md"
+              class="btn btn-secondary text-gray-400 rounded-0 btn-md"
               @click="closeModal">
                 Cancel
               </button>
               <button
                 type="submit"
-                class="btn btn-gray-dark btn-md"
+                class="btn btn-primary rounded-0 btn-md"
                 :disabled="isLoading"
               >
                 <div

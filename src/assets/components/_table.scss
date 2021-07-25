@@ -1,3 +1,53 @@
 .table tbody tr td {
   vertical-align: middle;
 }
+
+.cart-table {
+  tbody tr td {
+    vertical-align: top;
+  }
+  .cartImg-wrapper {
+    width: 200px;
+    height: 200px;
+    img {
+      object-fit: cover;
+    }
+  }
+  .td-cart-img {
+    width: 200px;
+  }
+  .td-cart-qty,
+  .td-cart-price {
+    width: 150px
+  }
+  .cart-price-btn-wrapper {
+    height: 200px;
+  }
+  .form-control[type="number"]::-webkit-inner-spin-button,
+  .form-control[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  };
+  
+}
+
+.order-table {
+  .orderImg-wrapper {
+    width: 80px;
+    height: 80px;
+    img {
+      object-fit: cover;
+    }
+  }
+  .td-order-img {
+    width: 80px;
+  }
+  .td-order-qty {
+    width: 50px
+  }
+}
+
+.card-cart,
+.cart-empty-text {
+  height: 100vh;
+}

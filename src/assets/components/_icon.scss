@@ -11,3 +11,39 @@
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.service-label-wrapper {
+  .machine-wash-label {
+    height: 32px;
+  }
+  .dry-clean-label {
+    height: 35px;
+  }
+  .tumble-dry-label {
+    height: 35px;
+  }
+  .bleach-label {
+    height: 32px;
+  }
+}
+
+.navbar {
+  height: 4rem;
+}
+
+.logo {
+  height: 25px;
+}
+
+.shopping-bag-icon-wrapper {
+  .machine-wash-label {
+    height: 20px;
+  }
+}
+
+.shopping-bag-num-wrapper {
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  right: -10px;
+}

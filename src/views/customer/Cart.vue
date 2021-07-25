@@ -1,35 +1,32 @@
 <template>
-  <div class="container-fluid px-5">
+  <CartSideBar
+  :cart="cart"
+  @apply-coupon="applyCoupon"
+  @checkout="goToCheckout"
+  >
+  </CartSideBar>
+  <div class="main-content-wrapper container-fluid px-5">
     <!-- product label -->
-    <div class="card product-label border border-secondary ms-5 mb-3 position-fixed">
-      <div class="card-footer border-secondary bg-white p-0">
-        <div class="laundry-label-wrapper d-flex justify-content-between p-3">
-          <a href="#" class="cart-icon d-flex">
-            <img src="../../assets/icon/machine_wash.svg" alt="" />
-            <!-- <div class="cart-counter text-center">{{ cart.carts.length }}</div> -->
-          </a>
-          <img src="../../assets/icon/dry_clean.svg" alt="" class="dry-clean-label" />
-          <img src="../../assets/icon/ironing_low.svg" alt="" class="iron-label" />
-        </div>
-        <a
-          href="#"
-          class="w-100 btn btn-primary px-4 text-uppercase"
-          @click.prevent="backToProducts"
-          >back to products</a
+    <div v-show="!reachedBottom" class="position-fixed card-left-side">
+      <div class="card-cart-icon product-label ms-5 mb-3 bg-gray-800 mb-5">
+        <ShoppingBagStatus
+          :cart="cartNum"
         >
+        </ShoppingBagStatus>
       </div>
     </div>
 
+    <!-- 購物車內容 -->
     <!-- 判斷購物車陣列是否有資料 -->
     <template v-if="cart.total !== 0">
       <div class="row py-3">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-7">
           <!-- 購物車 table -->
-          <table class="table cart-table">
+          <table class="table cart-table text-uppercase">
             <thead>
               <tr>
                 <th class="table-title text-start"></th>
-                <th class="table-title text-start">product title</th>
+                <th class="table-title text-start">title</th>
                 <th class="table-title text-start">service</th>
                 <th class="table-title text-start">qty</th>
                 <th class="table-title text-end">total</th>
@@ -43,7 +40,7 @@
                   </div>
                 </td>
                 <td>
-                  <div class="product-title-wrapper text-start">
+                  <div class="product-title-wrapper">
                     <div class="cart-product-content">
                       {{ item.product.title }}
                     </div>
@@ -51,26 +48,30 @@
                   </div>
                 </td>
                 <td>
-                  <div class="service-wrapper text-start">
+                  <div class="service-wrapper">
                     <div v-if="item.dryClean" class="cart-product-content text-uppercase">
-                      dry clean service
+                      dry clean
                     </div>
                     <div v-if="item.wetClean" class="cart-product-content text-uppercase">
-                      wet clean service
+                      wet clean
                     </div>
                     <div v-if="item.ironing" class="cart-product-content text-uppercase">
-                      ironing service
+                      ironing
                     </div>
                   </div>
                 </td>
                 <td class="td-cart-qty">
-                  <div class="input-group inline-group justify-content-between">
-                    <div class="quantity d-flex align-items-center border border-secondary">
-                      <button class="btn btn-minus" @click="changeQty('minus', index)">
+                  <div class="input-group inline-group ">
+                    <div
+                      class="quantity d-flex align-items-center justify-content-between rounded-0"
+                    >
+                      <button
+                      class="btn p-0 d-flex align-items-center" @click="changeQty('minus', index)">
                         <i class="material-icons">remove</i>
                       </button>
                       {{ item.qty }}
-                      <button class="btn btn-plus" @click="changeQty('add', index)">
+                      <button
+                      class="btn p-0 d-flex align-items-center" @click="changeQty('add', index)">
                         <i class="material-icons">add</i>
                       </button>
                     </div>
@@ -78,9 +79,27 @@
                 </td>
                 <td class="td-cart-price text-end">
                   <div class="d-flex flex-column justify-content-between cart-price-btn-wrapper">
-                    <div class="cart-product-content">
+                    <div class="num">
                       {{ item.final_total }}
                     </div>
+                    <!-- <div class="input-group flex-column align-items-end mb-3">
+                      <input
+                        id="cartCoupon"
+                        type="text"
+                        name="cartCoupon"
+                        class="form-control rounded-0 bg-gray-700 border w-100 border-gray-600"
+                        placeholder="e.g. BUYNOW0x"
+                        aria-label="check out coupon input"
+                        aria-describedby="cartCouponLabel"
+                        v-model="coupon"
+                      />
+                      <button
+                        class="btn btn-secondary text-uppercase text-gray-400 rounded-0 mt-3"
+                        @click="applyCoupon"
+                      >
+                        Apply Coupon
+                      </button>
+                    </div> -->
                     <button
                       type="button"
                       id="cartRemove"
@@ -99,66 +118,13 @@
           </table>
           <div class="">
             <button
-              class="btn btn-secondary d-flex align-items-center ms-auto"
+              class="btn btn-secondary rounded-0 text-uppercase text-gray-400
+              d-flex align-items-center ms-auto"
               @click="deleteCart('all')"
             >
               <i class="material-icons">close</i>
               <span class="ms-2">remove all</span>
             </button>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4">
-          <div class="card card-cart border border-secondary w-100">
-            <div class="card-body">
-              <div class="h-100 d-flex flex-row align-items-end">
-                <table class="w-100">
-                  <tbody class="">
-                    <tr>
-                      <td class="text-start text-uppercase">
-                        <label for="cartCoupon">I have a coupon code</label>
-                      </td>
-                      <td class="text-end">
-                        <input
-                          type="text"
-                          id="cartCoupon"
-                          class="form-control ms-auto"
-                          placeholder="e.g. BUYNOW0x"
-                          aria-label="check out coupon input"
-                          aria-describedby="cartCouponLabel"
-                          required
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-start text-uppercase">subtotal</td>
-                      <td class="text-end">$ {{ cart.total }}</td>
-                    </tr>
-                    <tr>
-                      <td class="text-start text-uppercase">discount</td>
-                      <td class="text-end">$ 0</td>
-                    </tr>
-                    <tr>
-                      <td class="text-start text-uppercase">total</td>
-                      <td class="text-end">$ {{ cart.final_total }}</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2" class="text-start text-muted">
-                        Shipping will be calculated during checkout
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card-footer p-3 border-top-0 bg-white">
-              <button
-                type="button"
-                class="btn btn-primary text-uppercase w-100"
-                @click="goToCheckout"
-              >
-                check out
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -168,16 +134,38 @@
       Your shopping cart is empty.
     </h1>
   </div>
+  <div class="position-absolute bottom-0 w-100">
+    <Footer
+    @footer-position="footerPosition"
+    >
+    </Footer>
+  </div>
 </template>
 
 <script>
 import emitter from '@/components/tools/emitter';
+import CartSideBar from '@/components/customer/CartSideBar.vue';
+import ShoppingBagStatus from '@/components/customer/ShoppingBagStatus.vue';
+import Footer from '@/components/customer/Footer.vue';
 
 export default {
   data() {
     return {
+      navClassList: {
+        navbarTop: 'bg-white',
+      },
+      windowHeight: 0,
+      coupon: '',
       cart: {},
+      cartNum: 0,
+      footer: 0,
+      reachedBottom: false,
     };
+  },
+  components: {
+    CartSideBar,
+    ShoppingBagStatus,
+    Footer,
   },
   methods: {
     getCart() {
@@ -189,6 +177,7 @@ export default {
           console.log(res);
           if (res.data.success) {
             this.cart = res.data.data;
+            this.cartNum = this.cart.carts.length;
           } else {
             alert(res.data.message);
           }
@@ -254,6 +243,25 @@ export default {
           console.log(err);
         });
     },
+    applyCoupon(str) {
+      const loader = this.$loading.show();
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
+      this.$http
+        .post(url, { data: { code: str } })
+        .then((res) => {
+          console.log(res);
+          if (res.data.success) {
+            console.log(res.data.data.final_total);
+            this.getCart();
+          } else {
+            alert(res.data.message);
+          }
+          loader.hide();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     backToProducts() {
       this.$router.push({ name: 'Products' });
     },
@@ -262,10 +270,35 @@ export default {
       emitter.emit('sendCart', this.cart);
       this.$router.push({ name: 'CheckOut' });
     },
+    scrollHandler() {
+      const windowY = window.scrollY;
+      // 改變 Navbar 樣式
+      if (windowY >= 80) {
+        this.navClassList.navbarTop = 'bg-dark';
+        emitter.emit('updateNav', this.navClassList);
+      } else {
+        this.navClassList.navbarTop = '';
+        emitter.emit('updateNav', this.navClassList);
+      }
+      // scroll 到 footer 時 hide 掉 card
+      if (windowY >= this.footer) {
+        this.reachedBottom = true;
+      } else {
+        this.reachedBottom = false;
+      }
+    },
+    footerPosition(pos) {
+      this.footer = pos;
+    },
   },
-  created() {
+  mounted() {
     console.clear();
     this.getCart();
+    this.windowHeight = window.innerHeight;
+    document.addEventListener('scroll', this.scrollHandler);
+  },
+  unmounted() {
+    document.removeEventListener('scroll', this.scrollHandler);
   },
 };
 </script>

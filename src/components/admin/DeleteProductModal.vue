@@ -33,7 +33,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-gray-dark btn-md"
+            class="btn btn-danger btn-md"
             :disabled="isLoading"
             @click="removeProduct"
           >

@@ -5,22 +5,20 @@
         class="
               page-center-wrapper
               d-flex
+              flex-column
               align-items-center
               justify-content-center
             "
       >
-        <div class="card card-login border-secondary bg-light">
-          <div class="card-body login-card-body">
-            <h1 class="text-uppercase m-0">Admin Login</h1>
-          </div>
+        <h1 class="h2 text-uppercase m-0">Admin Login</h1>
+        <div class="card card-login card-shadow rounded-0 mt-3">
           <div
-          class="input-group login-group border border-secondary border-start-0 border-end-0">
-            <label for="email" class="form-label text-uppercase m-0 me-2">Email</label>
+          class="input-group login-group mt-6">
             <Field
               id="email"
               name="Email"
               type="email"
-              class="form-control border-0 bg-light"
+              class="form-control border-0 rounded-0"
               :class="{ 'is-invalid': errors['Email'] }"
               placeholder="Email"
               aria-label="Email input"
@@ -31,15 +29,12 @@
             <ErrorMessage name="Email" class="invalid-feedback"></ErrorMessage>
           </div>
 
-          <div class="input-group login-group">
-            <label for="password" class="form-label text-uppercase m-0 me-2"
-              >Password</label
-            >
+          <div class="input-group login-group mb-6">
             <Field
               id="password"
               name="Password"
               type="password"
-              class="form-control border-0 bg-light"
+              class="form-control border-0 rounded-0"
               :class="{ 'is-invalid': errors['Password'] }"
               placeholder="Password"
               aria-label="Password input"
@@ -49,8 +44,11 @@
             />
             <ErrorMessage name="Password" class="invalid-feedback"></ErrorMessage>
           </div>
-          <button type="submit" id="login"
-          class="btn btn-primary btn-lg text-uppercase">
+          <button
+            type="submit"
+            id="login"
+            class="btn btn-dark btn-lg rounded-0 text-uppercase"
+          >
             Login
           </button>
         </div>

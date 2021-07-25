@@ -1,6 +1,8 @@
 .card {
   &.card-login {
     width: 600px;
+    background: rgb(14,14,26);
+    background: linear-gradient(0deg, rgba(14,14,26,1) 0%, rgba(46,44,68,1) 100%);
   }
   .card-body {
     &.login-card-body {
@@ -8,3 +10,31 @@
     }
   }
 }
+
+.card-left-side {
+  bottom: 0;
+  z-index: 98;
+}
+
+.card-products-filter,
+.card-product,
+.card-cart-icon {
+  margin-left: 55px;
+  border-radius: $border-radius-lg;
+}
+
+.card-products-filter,
+.card-cart-icon {
+  width: 245px;
+  padding: 1rem 2rem;
+}
+
+.card-product {
+  width: 300px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+// .modal-content {
+//   background-color: #201F2C;
+// }

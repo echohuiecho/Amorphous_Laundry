@@ -7,15 +7,23 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-form modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content bg-body">
         <div class="modal-header form-modal-header">
-          <h1 v-if="modalType === 'addProduct'" class="modal-title title-hk">
+          <h1 v-if="modalType === 'addProduct'" class="h3">
             Add New Product
           </h1>
-          <h1 v-else class="modal-title title-hk">
+          <h1 v-else class="h3">
             Edit Product
           </h1>
-          <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
+          <button
+            type="button"
+            class="btn p-0"
+            aria-label="Close"
+            :disabled="isLoading"
+            @click="closeModal"
+          >
+            <i class="material-icons">close</i>
+          </button>
         </div>
         <div class="modal-body">
           <Form id="productForm" v-slot="{ errors }" @submit="updateProduct(modalType)">
@@ -24,7 +32,7 @@
             </div>
             <div class="input-group mb-3">
               <label for="productTitle" class="modal-title-hk w-100 mb-2"
-                >Product Title Chinese*</label
+                >Product Title*</label
               >
               <Field
                 id="productTitle"
@@ -58,7 +66,7 @@
               </Field>
               <ErrorMessage name="Category" class="invalid-feedback"></ErrorMessage>
             </div>
-            <div class="input-group mb-3">
+            <!-- <div class="input-group mb-3">
               <label for="productType" class="modal-title-hk w-100 mb-2">Product Type*</label>
               <Field
                 id="productType"
@@ -70,7 +78,8 @@
                 v-model="productTemp.productType"
               >
                 <option value="" disabled>Please Choose</option>
-                <template v-if="productTemp.category === '衣物類'">
+                <template
+                  v-if="productTemp.category === '衣物類' || productTemp.category === 'Clothes'">
                   <option
                     :value="clothingType"
                     v-for="clothingType in productType.clothings"
@@ -78,22 +87,27 @@
                     >{{ clothingType }}</option
                   >
                 </template>
-                <template v-else-if="productTemp.category === '袋類'">
+                <template
+                  v-else-if="productTemp.category === '袋類' || productTemp.category === 'Bags'">
                   <option :value="bagType" v-for="bagType in productType.bags" :key="bagType">{{
                     bagType
                   }}</option>
                 </template>
-                <template v-else-if="productTemp.category === '鞋類'">
+                <template
+                  v-else-if="productTemp.category === '鞋類' || productTemp.category === 'Shoes'">
                   <option :value="shoeType" v-for="shoeType in productType.shoes" :key="shoeType">{{
                     shoeType
                   }}</option>
                 </template>
-                <template v-else-if="productTemp.category === '公仔類'">
+                <template
+                  v-else-if="productTemp.category === '公仔類' || productTemp.category === 'Soft Toys'"
+                >
                   <option :value="toyType" v-for="toyType in productType.softToys" :key="toyType">{{
                     toyType
                   }}</option>
                 </template>
-                <template v-else-if="productTemp.category === '布草類'">
+                <template
+                  v-else-if="productTemp.category === '布草類' || productTemp.category === 'Beddings'">
                   <option
                     :value="clothType"
                     v-for="clothType in productType.clothes"
@@ -103,7 +117,7 @@
                 </template>
               </Field>
               <ErrorMessage name="Product Type" class="invalid-feedback"></ErrorMessage>
-            </div>
+            </div> -->
             <div class="input-group mb-3">
               <label for="productColor" class="modal-title-hk w-100 mb-2">Color*</label>
               <Field
@@ -124,10 +138,10 @@
               <label for="productUnit" class="modal-title-hk w-100 mb-2">單位*</label>
               <Field
                 id="productUnit"
-                name="Porduct Unit"
+                name="Product Unit"
                 type="text"
                 class="form-control product-modal-form-control"
-                placeholder="輸入產品單位"
+                placeholder="Type the Product unit"
                 aria-label="Product unit input"
                 aria-describedby="productUnitLabel"
                 :class="{ 'is-invalid': errors['Product Unit'] }"
@@ -306,7 +320,7 @@
               </label>
             </div>
             <label for="dirtService" class="modal-title-hk w-100 mb-2"
-              >Dirt Removal Service (去漬/起漬服務)</label
+              >Dirt Removal Service</label
             >
             <div class="input-group form-check form-switch d-flex align-items-center mb-3">
               <input
@@ -335,13 +349,15 @@
               </label>
             </div>
             <div class="modal-footer product-modal-footer">
-              <button type="button" class="btn btn-outline-primary btn-md" @click="closeModal">
+              <button
+                type="button"
+                class="btn btn-secondary text-gray-400 rounded-0 btn-md" @click="closeModal">
                 Cancel
               </button>
               <button
                 v-if="modalType === 'addProduct'"
                 type="submit"
-                class="btn btn-gray-dark btn-md"
+                class="btn btn-primary rounded-0 btn-md"
                 :disabled="isLoading"
               >
                 <div class="spinner-grow spinner-grow-sm me-2" role="status" v-if="isLoading">
@@ -350,7 +366,9 @@
                 Add Product
               </button>
 
-              <button v-else type="submit" class="btn btn-gray-dark btn-md" :disabled="isLoading">
+              <button
+                v-else type="submit"
+                class="btn btn-primary rounded-0 btn-md" :disabled="isLoading">
                 <div class="spinner-grow spinner-grow-sm me-2" role="status" v-if="isLoading">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -372,15 +390,15 @@ export default {
   data() {
     return {
       modal: '',
-      category: ['衣物類', '袋類', '鞋類', '公仔類', '布草類'],
-      productType: {
-        clothings: ['外套', '上身', '下身', '內衣物', '襪子'],
-        bags: ['布袋', '皮革袋', '尼龍袋'],
-        shoes: ['運動鞋', '皮鞋', '布質拖鞋'],
-        softToys: ['大型毛公仔', '小型毛公仔'],
-        clothes: ['床單', '被袋', '枕袋', '枱布', '大毛巾', '小毛巾'],
-      },
-      colorType: ['彩色', '白色'],
+      category: ['Clothes', 'Bags', 'Shoes', 'Soft Toys', 'Beddings'],
+      // productType: {
+      //   clothings: ['外套', '上身', '下身', '內衣物', '襪子'],
+      //   bags: ['布袋', '皮革袋', '尼龍袋'],
+      //   shoes: ['運動鞋', '皮鞋', '布質拖鞋'],
+      //   softToys: ['大型毛公仔', '小型毛公仔'],
+      //   clothes: ['床單', '被袋', '枕袋', '枱布', '大毛巾', '小毛巾'],
+      // },
+      colorType: ['Color', 'White'],
       productTemp: {
         imagesUrl: [],
       },
@@ -406,19 +424,19 @@ export default {
     openUploadModal(str, index) {
       let uploadFolder = '';
       switch (this.productTemp.category) {
-        case '衣物類':
+        case '衣物類' || 'Clothes':
           uploadFolder = '2021_Amorphous_hotel/Clothes';
           break;
-        case '袋類':
+        case '袋類' || 'Bags':
           uploadFolder = '2021_Amorphous_hotel/Bags';
           break;
-        case '鞋類':
+        case '鞋類' || 'Shoes':
           uploadFolder = '2021_Amorphous_hotel/Shoes';
           break;
-        case '公仔類':
+        case '公仔類' || 'Soft Toys':
           uploadFolder = '2021_Amorphous_hotel/Soft-toys';
           break;
-        case '布草類':
+        case '布草類' || 'Beddings':
           uploadFolder = '2021_Amorphous_hotel/Clothings';
           break;
         default:

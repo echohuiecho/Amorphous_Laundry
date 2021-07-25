@@ -1,15 +1,12 @@
 <template>
   <div class="container mt-5">
-    <div class="card product-card">
-      <div class="card-body product-header">
-        <h1 class="title-en text-uppercase text-center">
-          Orders
-        </h1>
-        <h1 class="title-hk text-center mb-0">
-          訂單列表
-        </h1>
-      </div>
-      <div class="card-body bg-light">
+    <div class="d-flex justify-content-between align-content-center mb-3">
+      <h1 class="h3 text-uppercase m-0">
+        All Orders
+      </h1>
+    </div>
+    <div class="card product-card border border-gray-600 rounded-0">
+      <div class="card-body bg-gray-700">
         <table class="table table-hover mt-4">
           <thead>
             <tr>
@@ -17,8 +14,8 @@
               <th class="table-title-hk text-start">id</th>
               <th class="table-title-hk text-start">Date</th>
               <th class="table-title-hk text-start">Payment Status</th>
-              <th class="table-title-hk text-end" width="80">編輯</th>
-              <th class="table-title-hk text-end" width="80">刪除</th>
+              <th class="table-title-hk text-end" width="80">Edit</th>
+              <th class="table-title-hk text-end" width="80">Delete</th>
             </tr>
           </thead>
           <tbody id="productList">

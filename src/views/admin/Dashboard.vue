@@ -1,7 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">Amorphous Laundry Dashboard</router-link>
+      <div class="logo-wrapper me-3">
+        <img src="../../assets/icon/logo.png" alt="" class="logo" />
+        <router-link class="ms-2" to="/">Amorphous Laundry Dashboard</router-link>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +20,6 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/admin/coupons">Coupons</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/admin/articles">Articles</router-link>
           </li>
           <li class="nav-item">
             <button class="btn text-white" @click="logout">Logout</button>
@@ -63,9 +63,21 @@ export default {
     },
     // 登出
     logout() {
-      // 刪除 cookie
-      document.cookie = 'userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      this.$router.push('/login');
+      const url = `${process.env.VUE_APP_API}logout`;
+      this.$http
+        .post(url)
+        .then((res) => {
+          if (res.data.success) {
+            // 刪除 cookie
+            document.cookie = 'userToken=; expires=; path=/;';
+            this.$router.push('/login');
+          } else {
+            alert(res.data.message);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   created() {

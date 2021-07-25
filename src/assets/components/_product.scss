@@ -3,42 +3,6 @@
   .product-hero-img {
     object-fit: cover;
     position: absolute;
-    left: 0;
-  }
-}
-
-.product-details-wrapper {
-  height: 100vh;
-  .form-check-input {
-    width: 70px;
-    height: 20px;
-  }
-  .form-control[type="number"]::-webkit-inner-spin-button,
-  .form-control[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  .quantity {
-    width: 150px;
-    height: 30px;
-    .form-control {
-      border-left: 0;
-      border-right: 0;
-      border-top: 1px solid $secondary;
-      border-bottom: 1px solid $secondary;
-      height: 30px;
-    }
-  }
-  a {
-    text-decoration: none;
-    &:hover {
-      background-color: $primary;
-      color: $white;
-    }
-  }
-  .active-link {
-    background-color: $primary;
-    color: $white;
   }
 }
 
@@ -47,23 +11,5 @@
   height: 50vw;
   img {
     object-fit: cover;
-  }
-}
-
-// product detail page - other products session
-.btn-other-product {
-  width: 150px;
-  transition: width 0.4s;
-  span {
-    display: none;
-  }
-  &:hover {
-    width: 200px;
-    i {
-      display: none;
-    }
-    span {
-      display: inline-block;
-    }
   }
 }

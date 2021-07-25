@@ -1,21 +1,20 @@
 <template>
   <div class="container mt-5">
     <!-- 全部產品Table -->
-    <button type="button" class="btn btn-light btn-outline-primary mb-3"
-    @click="openModal('addProduct')">
-      <i class="material-icons">add</i>
-      <span> 加入產品 </span>
-    </button>
-    <div class="card product-card border border-primary">
-      <div class="card-body product-header">
-        <h1 class="title-en text-uppercase text-center">
-          All products
-        </h1>
-        <h1 class="title-hk text-center mb-0">
-          產品列表
-        </h1>
-      </div>
-      <div class="card-body bg-light">
+    <div class="d-flex justify-content-between align-content-center mb-3">
+      <h1 class="h3 text-uppercase m-0">
+        All products
+      </h1>
+      <button type="button"
+      class="btn btn-secondary rounded-0
+      d-flex align-items-center text-gray-400 text-uppercase"
+      @click="openModal('addProduct')">
+        <i class="material-icons">add</i>
+        <span> create product </span>
+      </button>
+    </div>
+    <div class="card product-card border border-gray-600 rounded-0">
+      <div class="card-body bg-gray-700">
         <table class="table table-hover mt-4">
           <thead>
             <tr>
@@ -37,7 +36,7 @@
             <td class="text-start" width="120">{{ product.origin_price }}</td>
             <td class="text-start" width="120">{{ product.price }}</td>
             <td class="text-start">
-              {{ product.is_enabled === '1' ? '啟用' : '未啟用' }}
+              {{ product.is_enabled === '1' ? 'Enabled' : 'Disabled' }}
             </td>
             <td class="text-end">
               <button

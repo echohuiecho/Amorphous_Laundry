@@ -6,3 +6,69 @@
 .page-center-wrapper {
   height: 100vh;
 }
+
+// padding for nav
+.landing-container {
+  padding-top: 4rem;
+}
+
+.main-content-wrapper {
+  padding-top: 3.5rem;
+}
+
+.landing-container {
+   /* The image used */
+  background-image: url("~@/assets/Landing_towel.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.h-lg-85 {
+  //電腦版
+  @include pc-width{
+    height: 85vh;
+  }
+}
+
+.landing-pill,
+.about-pill {
+  width: 380px;
+  .pill-msg {
+    background: rgb(14,14,26);
+    background: linear-gradient(0deg, rgba(14,14,26,1) 0%, rgba(46,44,68,1) 100%);
+  } 
+}
+
+.service-pill {
+  width: 420px;
+  z-index: 90;
+  margin-left: 55px;
+  margin-top: 4rem;
+  .pill-msg {
+    background: rgb(14,14,26);
+    background: linear-gradient(0deg, rgba(14,14,26,1) 0%, rgba(46,44,68,1) 100%);
+  } 
+}
+
+.about-pill {
+  margin-left: 55px;
+  margin-top: 4rem;
+}
+
+.product-hero-wrapper {
+  height: 25vw;
+}
+
+.img-object-fit {
+  object-fit: cover;
+}
+
+.card-shadow {
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.50);
+}

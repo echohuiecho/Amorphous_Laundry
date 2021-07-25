@@ -1,52 +1,25 @@
 <template>
-  <div class="container-fluid px-5">
-    <!-- product label -->
-    <div class="card product-label border border-secondary ms-5 mb-3 position-fixed">
-      <div class="card-footer border-secondary bg-white p-0">
-        <div class="laundry-label-wrapper d-flex justify-content-between p-3">
-          <a href="#" class="cart-icon" @click="$emit('list-status', 'cartList')">
-            <img src="../../assets/icon/machine_wash.svg" alt="" />
-          </a>
-          <img src="../../assets/icon/dry_clean.svg" alt="" class="dry-clean-label" />
-          <img src="../../assets/icon/ironing_low.svg" alt="" class="iron-label" />
-        </div>
-        <router-link class="w-100 btn btn-primary px-4 text-uppercase" to="/products">
-          I have more things to wash
-        </router-link>
-      </div>
-    </div>
-
+  <div class="main-content-wrapper container-fluid">
     <div class="row py-3">
-      <div class="col-12 col-lg-8">
-        <h1 class="text-start text-uppercase">thank for your order, {{ order.name }}!</h1>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card card-order-success border border-secondary w-100">
-          <div class="card-body">
-            <table class="table order-table">
-              <thead class="text-uppercase">
-                <tr>
-                  <th colspan="2" class="text-start">your order has been confirmed!</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-start td-order-success">Name</td>
-                  <td class="text-start">{{ order.name }}</td>
-                </tr>
-                <tr>
-                  <td class="text-start td-order-success">Contact</td>
-                  <td>
-                    <div class="text-start order-contact-wrapper">
-                      <div class="order-contact">{{ order.email }}</div>
-                      <div class="order-contact">{{ order.tel }}</div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div class="col-12 col-lg-7">
+        <div class="card card-body bg-gray-800">
+          <div class="h3 text-uppercase">thank for your order, {{ order.name }}!</div>
+          <div class="small font-regular text-uppercase">order number #{{ id }}</div>
+          <div class="text-light-green mt-3">Name</div>
+          <div>{{ order.name }}</div>
+          <div class="text-light-green mt-3">Email</div>
+          <div>{{ order.email }}</div>
+          <div class="text-light-green mt-3">Phone</div>
+          <div>{{ order.tel }}</div>
+          <div class="text-light-green mt-3">Address</div>
+          <div>{{ order.address }}</div>
         </div>
+        <router-link
+          to="/products"
+          class="btn btn-primary rounded-0 text-uppercase mt-5"
+        >
+          I have more thing to wash
+        </router-link>
       </div>
     </div>
   </div>
@@ -57,6 +30,7 @@ export default {
   data() {
     return {
       order: {},
+      id: '',
     };
   },
   methods: {
@@ -81,8 +55,12 @@ export default {
         });
     },
   },
-  created() {
+  // created() {
+  //   this.getOrder();
+  // },
+  mounted() {
     this.getOrder();
+    this.id = this.$route.params.id;
   },
 };
 </script>

@@ -1,10 +1,14 @@
 .input-group {
   align-items: center;
   &.login-group {
-    padding: 2rem 2rem;
-    border-bottom: 1px solid rgba(122, 122, 122, 1);
+    padding: 0.5rem 2rem;
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #565568;
+      opacity: 1; /* Firefox */
+    }
   }
   .form-control {
+    background-color: #2C2A41 !important;
     &:focus,
     &:active {
       box-shadow: none;
@@ -25,6 +29,65 @@
       &:checked {
         background-color: #313131;
         border-color: #313131;
+      }
+    }
+  }
+}
+
+.card-product,
+.td-cart-qty {
+  .input-group {
+    align-items: center;
+    .form-control {
+      &:focus,
+      &:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    }
+    &.form-check {
+      .form-check-input {
+        width: 40px;
+        height: 16px;
+        margin: 0;
+        border-radius: 8px !important;
+        background-color: $secondary;
+        border: none;
+        &:checked {
+          background-color: $primary;
+          border: none;
+        }
+      }
+    }
+    .form-control[type="number"]::-webkit-inner-spin-button,
+    .form-control[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .quantity {
+      width: 100px;
+      height: 30px;
+      border: none;
+      background-color: $secondary;
+      border-radius: $border-radius !important;
+      .form-control {
+        border-left: 0;
+        border-right: 0;
+        border: none;
+        background-color: transparent;
+        height: 30px;
+      }
+    }
+  }
+}
+
+.cart-sidebar {
+  .input-group {
+    .form-control {
+      &:focus,
+      &:active {
+        box-shadow: none;
+        -webkit-box-shadow: none;
       }
     }
   }

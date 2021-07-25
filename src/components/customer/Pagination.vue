@@ -3,7 +3,7 @@
     <ul class="pagination mt-5 justify-content-center">
       <li class="page-item" :class="{ disabled: !this.page.has_pre }">
         <a
-          class="page-link product-page-link-arrow"
+          class="page-link page-link-frontend text-gray-400"
           href="#top"
           aria-label="Previous"
           @click.prevent="$emit('get-product', this.page.current_page - 1)"
@@ -12,13 +12,13 @@
         </a>
       </li>
       <li
-        class="page-item product-page-item"
+        class="page-item"
         v-for="(page, key) in this.page.total_pages"
         :class="{ active: this.page.current_page === key + 1 }"
         :key="key"
       >
         <a
-          class="page-link product-page-link"
+          class="page-link page-link-frontend text-gray-400"
           href="#"
           @click.prevent="$emit('get-product', key + 1)"
           >{{ key + 1 }}
@@ -26,7 +26,7 @@
       </li>
       <li class="page-item" :class="{ disabled: !this.page.has_next }">
         <a
-          class="page-link product-page-link-arrow"
+          class="page-link page-link-frontend text-gray-400"
           href="#top"
           aria-label="Next"
           @click.prevent="$emit('get-product', this.page.current_page + 1)"

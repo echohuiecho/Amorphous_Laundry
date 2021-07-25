@@ -2,8 +2,10 @@
   color: #888792;
 }
 
+// Menu Nav
 nav {
-  &.nav-sidebar {
+  transition: all 0.2s;
+  &.menu-sidebar {
     width: 35vw;
     font-size: 1.5rem;
     transition: all .4s;
@@ -11,6 +13,25 @@ nav {
       width: 45vw;
     }
   }
+  .menu-sidebar-wrapper {
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.50);
+  }
+}
+
+// Home Nav
+.nav-sidebar {
+  padding-top: 4rem;
+  right: 55px;
+  z-index: 99;
+}
+
+// About Nav
+.about-sidebar,
+.service-sidebar,
+.price-sidebar,
+.cart-sidebar {
+  width: 35vw;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.50);
 }
 
 .nav-sidebar-toggler {
@@ -25,6 +46,47 @@ nav {
   }
 }
 
+
+// Pagination
+.page-link {
+  &.page-link-frontend {
+    background-color: transparent;
+    border: none;
+  }
+  &.page-link-backend {
+    background-color: $secondary;
+    border: none;
+    &.num {
+      background-color: transparent;
+    }
+  }
+}
+
+.page-item {
+  &.active {
+    .page-link {
+      &.page-link-frontend {
+        background-color: transparent;
+        background-color: transparent;
+        font-weight: 500;
+      }
+    }
+  }
+  &.disabled {
+    .page-link {
+      &.page-link-frontend {
+        background-color: transparent;
+        border: none;
+      }
+      &.page-link-backend {
+        background-color: $dark;
+        border: none;
+      }
+    }
+  }
+}
+
+// Footer
 .footer {
   z-index: 1;
 }

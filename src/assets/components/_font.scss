@@ -30,9 +30,41 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Euclid Flex', Helvetica, Arial, sans-serif;
   font-weight: 500;
-  &.title-hk {
-    font-family: 'Noto Sans TC', sans-serif;
-  }
+}
+
+.h1 {
+
+}
+
+.h2 {
+  font-size: 2rem;
+}
+
+.h3 {
+  font-size: 1.5rem;
+}
+
+.h4 {
+
+}
+
+.h5 {
+  font-size: 1.125rem;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.pagination,
+.num {
+  font-family: 'Work Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.footer-wrapper {
+  font-family: 'Euclid Flex', Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }

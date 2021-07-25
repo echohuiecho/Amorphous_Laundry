@@ -8,30 +8,21 @@
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header delete-modal-header bg-light">
-          <h2 class="modal-title title-hk" id="deleteModalLabel">
-            <span v-if="modalType === 'deleteProduct'">
-              Delete Product?
-            </span>
-            <span v-else-if="modalType === 'deleteOrder'">
-              Delete Order?
-            </span>
-            <span v-else-if="modalType === 'deleteCoupon'">
-              Delete Coupon?
-            </span>
-            <span v-else>
-              Delete article?
-            </span>
+        <div class="modal-header delete-modal-header bg-gray-700">
+          <h2 class="m-0" id="deleteModalLabel">
+            Are you sure?
           </h2>
           <button
             type="button"
-            class="btn-close"
+            class="btn p-0"
             aria-label="Close"
             :disabled="isLoading"
             @click="closeModal"
-          ></button>
+          >
+            <i class="material-icons">close</i>
+          </button>
         </div>
-        <div class="modal-body product-modal-body text-start">
+        <div class="modal-body bg-gray-700 text-body">
           <span v-if="modalType === 'deleteProduct'">
             This will permanently delete the product <strong>{{ temp.title }}</strong>.
           </span>
@@ -41,21 +32,18 @@
           <span v-else-if="modalType === 'deleteCoupon'">
             This will permanently delete the coupon <strong>{{ temp.title }}</strong>.
           </span>
-          <span v-else>
-            This will permanently delete the article <strong>{{ temp.title }}</strong>.
-          </span>
             This action <strong>cannot</strong> be undone.
         </div>
-        <div class="modal-footer product-modal-footer">
+        <div class="modal-footer p-0 border-top-0 justify-content-between">
           <button type="button"
-          class="btn btn-outline-primary btn-md"
+          class="btn btn-light text-body btn-md m-0 rounded-0 w-50"
           :disabled="isLoading"
           @click="closeModal">
             Cancel
           </button>
           <button
             type="button"
-            class="btn btn-gray-dark btn-md"
+            class="btn btn-danger text-body btn-md m-0 rounded-0 w-50"
             :disabled="isLoading"
             @click="removeItem"
           >
@@ -104,9 +92,6 @@ export default {
           break;
         case 'deleteCoupon':
           url = `${url}/admin/coupon/${this.temp.id}`;
-          break;
-        case 'deleteArticle':
-          url = `${url}/admin/article/${this.temp.id}`;
           break;
         default:
           console.log('Cannot match the modal type');

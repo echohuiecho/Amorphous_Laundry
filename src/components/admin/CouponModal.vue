@@ -7,15 +7,23 @@
     aria-hidden="true"
   >
     <div class="modal-dialog modal-form modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content bg-body">
         <div class="modal-header form-modal-header">
-          <h1 v-if="modalType === 'addCoupon'" class="modal-title title-hk">
+          <h1 v-if="modalType === 'addCoupon'" class="h3">
             Add Coupon
           </h1>
-          <h1 v-else class="modal-title title-hk">
+          <h1 v-else class="h3">
             Edit Coupon
           </h1>
-          <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
+          <button
+            type="button"
+            class="btn p-0"
+            aria-label="Close"
+            :disabled="isLoading"
+            @click="closeModal"
+          >
+            <i class="material-icons">close</i>
+          </button>
         </div>
         <div class="modal-body product-modal-body">
           <Form id="couponForm" v-slot="{ errors }" @submit="updateCoupon(couponTemp.id)">
@@ -86,6 +94,8 @@
                 :class="{ 'is-invalid': errors['Due Date'] }"
                 rules="required"
                 v-model="tempDate"
+                :value="dateNow"
+                :min="dateNow"
               ></Field>
               <ErrorMessage name="Due Date" class="invalid-feedback"></ErrorMessage>
             </div>
@@ -106,10 +116,14 @@
               </label>
             </div>
             <div class="modal-footer product-modal-footer">
-              <button type="button" class="btn btn-outline-primary btn-md" @click="closeModal">
+              <button
+                type="button"
+                class="btn btn-secondary text-gray-400 rounded-0 btn-md"
+                @click="closeModal"
+              >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-gray-dark btn-md" :disabled="isLoading">
+              <button type="submit" class="btn btn-primary rounded-0 btn-md" :disabled="isLoading">
                 <div class="spinner-grow spinner-grow-sm me-2" role="status" v-if="isLoading">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -137,6 +151,7 @@ export default {
     return {
       modal: '',
       couponTemp: {},
+      dateNow: '',
       tempDate: 0,
       isLoading: false,
     };
@@ -146,14 +161,21 @@ export default {
       this.couponTemp = JSON.parse(JSON.stringify(this.temp));
       if (this.modalType === 'editCoupon') {
         this.couponTemp.is_enabled = this.couponTemp.is_enabled === 1;
-        this.changeDateFormat();
+        this.tempDate = this.changeDateFormat();
+      } else {
+        this.couponTemp.due_date = parseInt(
+          (new Date(`${this.couponTemp.due_date}`).getTime() / 1000).toFixed(0),
+          10,
+        );
       }
     },
     tempDate() {
+      console.log(this.couponTemp.due_date);
       this.couponTemp.due_date = parseInt(
         (new Date(`${this.tempDate}`).getTime() / 1000).toFixed(0),
         10,
       );
+      console.log(this.couponTemp.due_date);
     },
   },
   methods: {
@@ -165,13 +187,14 @@ export default {
     },
     changeDateFormat() {
       // change date format from "6/30/2021" to "2021-06-23"
-      this.tempDate = new Date(`${this.date}`);
-      const offset = this.tempDate.getTimezoneOffset();
-      this.tempDate = new Date(this.tempDate.getTime() - offset * 60 * 1000);
-      this.tempDate = this.tempDate.toISOString(); // return 2021-06-30T00:00:00.000Z
-      this.tempDate = this.tempDate.split('T');
-      const [date] = this.tempDate;
-      this.tempDate = date;
+      let newDateFormat = new Date(`${this.date}`);
+      const offset = newDateFormat.getTimezoneOffset();
+      newDateFormat = new Date(newDateFormat.getTime() - offset * 60 * 1000);
+      newDateFormat = newDateFormat.toISOString(); // return 2021-06-30T00:00:00.000Z
+      newDateFormat = newDateFormat.split('T');
+      const [date] = newDateFormat;
+      newDateFormat = date;
+      return date;
     },
     updateCoupon(id) {
       // 新增優惠卷或修改優惠卷

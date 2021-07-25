@@ -1,23 +1,21 @@
 <template>
   <div class="container mt-5">
-    <button
-      type="button"
-      class="btn btn-light btn-outline-primary mb-3"
-      @click="openModal('addCoupon')"
-    >
-      <i class="material-icons">add</i>
-      <span> 加入優惠卷 </span>
-    </button>
-    <div class="card product-card">
-      <div class="card-body product-header">
-        <h1 class="title-en text-uppercase text-center">
-          All Coupons
-        </h1>
-        <h1 class="title-hk text-center mb-0">
-          優惠卷列表
-        </h1>
-      </div>
-      <div class="card-body bg-light">
+    <div class="d-flex justify-content-between align-content-center mb-3">
+      <h1 class="h3 text-uppercase m-0">
+        All Coupons
+      </h1>
+      <button
+        type="button"
+        class="btn btn-secondary rounded-0
+      d-flex align-items-center text-gray-400 text-uppercase"
+        @click="openModal('addCoupon')"
+      >
+        <i class="material-icons">add</i>
+        <span> Create Coupon </span>
+      </button>
+    </div>
+    <div class="card product-card border border-gray-600 rounded-0">
+      <div class="card-body bg-gray-700">
         <table class="table table-hover mt-4">
           <thead>
             <tr>
@@ -25,9 +23,9 @@
               <th class="table-title-hk text-start">Coupon Code</th>
               <th class="table-title-hk text-start">Discount</th>
               <th class="table-title-hk text-start">Due Date</th>
-              <th class="table-title-hk text-end" width="80">啟用</th>
-              <th class="table-title-hk text-end" width="80">編輯</th>
-              <th class="table-title-hk text-end" width="80">刪除</th>
+              <th class="table-title-hk text-end" width="80">Enabled</th>
+              <th class="table-title-hk text-end" width="80">Edit</th>
+              <th class="table-title-hk text-end" width="80">Delete</th>
             </tr>
           </thead>
           <tbody id="productList">
@@ -36,7 +34,7 @@
               <td class="text-start">{{ coupon.code }}</td>
               <td class="text-start">{{ coupon.percent }}% OFF</td>
               <td class="text-start">{{ convertedDate[index] }}</td>
-              <td class="text-start">{{ coupon.is_enabled }}</td>
+              <td class="text-start">{{ coupon.is_enabled ? 'Enabled' : 'Disabled' }}</td>
               <td class="text-end">
                 <button
                   type="button"
@@ -92,6 +90,7 @@ export default {
       paginationData: '',
       temp: {},
       tempDate: {},
+      dateNow: '',
       modalType: '',
     };
   },
@@ -134,12 +133,14 @@ export default {
         this.tempDate = this.convertedDate[index];
       }
       if (modalStatus === 'addCoupon') {
+        this.getToday();
         // 新增優惠卷
         this.temp = {
           title: '',
           is_enabled: 0,
           percent: 1,
-          due_date: 0,
+          // due_date: 0,
+          due_date: this.dateNow,
           code: '',
         };
       } else {
@@ -161,6 +162,10 @@ export default {
         default:
           console.log('Cannot match the modal type');
       }
+    },
+    getToday() {
+      const today = new Date();
+      this.dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     },
     successAlert() {
       this.$swal({

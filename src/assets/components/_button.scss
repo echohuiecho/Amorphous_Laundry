@@ -1,3 +1,30 @@
+.btn-wide {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.btn-narrow {
+  padding: .25rem;
+}
+
 .btn-md {
   padding: 0.75em 1.75em;
+}
+
+// product detail page - other products session
+.btn-other-product {
+  width: 150px;
+  transition: width 0.4s;
+  span {
+    display: none;
+  }
+  &:hover {
+    width: 200px;
+    i {
+      display: none;
+    }
+    span {
+      display: inline-block;
+    }
+  }
 }

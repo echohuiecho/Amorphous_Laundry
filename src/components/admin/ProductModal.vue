@@ -135,7 +135,7 @@
               <ErrorMessage name="Product Color" class="invalid-feedback"></ErrorMessage>
             </div>
             <div class="input-group mb-3">
-              <label for="productUnit" class="modal-title-hk w-100 mb-2">單位*</label>
+              <label for="productUnit" class="modal-title-hk w-100 mb-2">Product Unit*</label>
               <Field
                 id="productUnit"
                 name="Product Unit"
@@ -424,19 +424,19 @@ export default {
     openUploadModal(str, index) {
       let uploadFolder = '';
       switch (this.productTemp.category) {
-        case '衣物類' || 'Clothes':
+        case 'Clothes':
           uploadFolder = '2021_Amorphous_hotel/Clothes';
           break;
-        case '袋類' || 'Bags':
+        case 'Bags':
           uploadFolder = '2021_Amorphous_hotel/Bags';
           break;
-        case '鞋類' || 'Shoes':
+        case 'Shoes':
           uploadFolder = '2021_Amorphous_hotel/Shoes';
           break;
-        case '公仔類' || 'Soft Toys':
+        case 'Soft Toys':
           uploadFolder = '2021_Amorphous_hotel/Soft-toys';
           break;
-        case '布草類' || 'Beddings':
+        case 'Beddings':
           uploadFolder = '2021_Amorphous_hotel/Clothings';
           break;
         default:

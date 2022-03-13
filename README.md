@@ -52,5 +52,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## :writing_hand: To do
 - Responsive design development
 
-## :clap: License
+## :page_facing_up: License
 [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
